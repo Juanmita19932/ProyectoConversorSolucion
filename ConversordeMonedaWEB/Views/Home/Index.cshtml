@@ -1,0 +1,89 @@
+﻿@model ConversordeMonedaWEB.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+
+    <h1>Cambio de Moneda</h1>
+    <form asp-action="Index" method="post" role="form">
+
+        <label asp-for="MonedaOrigen">Moneda de Origen</label>
+        <select class="form-select select" asp-for="MonedaOrigen">
+            @foreach (var moneda in Model.ListaMoneda)
+            {
+                <option value="@moneda.Sigla"> @moneda.Nombre</option>
+            }
+
+        </select>
+        <br />
+
+        <label asp-for="MonedaDestino">Moneda de Destino</label>
+        <select class="form-select select " asp-for="MonedaDestino">
+            @foreach (var moneda in Model.ListaMoneda)
+            {
+                <option value="@moneda.Sigla">@moneda.Nombre</option>
+            }
+        </select>
+
+        <br />
+
+        <label asp-for="Importe">Importe</label>
+        <input asp-for="Importe">
+        <br />
+        <input type="submit" value="Enviar" />
+    </form>
+
+    <hr />
+    <label for="Resultado">Resultado de la conversion</label>
+    @if (Model.Resultado > 0)
+    {
+        <p> @Model.Resultado  </p>
+    }
+
+
+
+
+    <hr />
+
+    <h1>Historico</h1>
+    <table class="table table-striped table-bordered table-hover">
+
+        <!--Cabecera-->
+        <thead>
+            <tr class="tituloH">
+                <th colspan="7"><b>Historial de Conversion</b></th>
+            </tr>
+            <tr>             
+                <th>Moneda Origen</th>
+                <th>Moneda Destino</th>
+                <th>Fecha</th>
+                <th>Factor de cambio</th>
+                <th>Valor</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <!--Cuerpo-->
+        <tbody>
+            @foreach (var historico in Model.ListaHistorico)
+            {
+                <tr>
+                    <td>@historico.MonedaOrigen</td>
+                    <td>@historico.MonedaDestino</td>
+                    <td>@historico.Fecha</td>
+                    <td>@historico.FactorConversion</td>
+                    <td>@historico.Valor</td>
+                    <td>@historico.Resultado</td>
+                </tr>
+            }
+        </tbody>
+        
+
+
+
+    </table>
+
+
+
+
+

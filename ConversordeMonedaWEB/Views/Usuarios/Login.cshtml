@@ -1,0 +1,22 @@
+﻿@model ConversordeMonedaWEB.ViewModels.LoginViewModel
+
+
+
+
+
+
+<h1>Login</h1>
+
+<form asp-action="Login" method="post" role="form">
+     <label asp-for="Email">Correo Electronico</label>
+    <input class="form-control" type="email" asp-for="Email" required/>
+    <br />
+<label asp-for="Contraseña">Contraseña</label>
+    <input class="form-control" type="password" asp-for="Contraseña" required/>
+    <br />
+    <br />
+    <input type="submit" value="Registrar Usuario" />
+
+</form>
+
+@Model.Estado

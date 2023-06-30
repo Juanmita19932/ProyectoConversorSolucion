@@ -1,0 +1,38 @@
+﻿@model ConversordeMonedaWEB.ViewModels.RegistroViewModel
+
+
+@{
+}
+<h1>Registro de Usuario</h1>
+
+<form asp-action="Registro" method="post" role="form">
+     <label asp-for="Nombre">Nombre de Usuario</label>
+    <input class="form-control" type="text" asp-for="Nombre" required/>
+    <br />
+    <label asp-for="Email">Correo Electronico</label>
+    <input class="form-control" type="email" asp-for="Email" required/>
+    <br />
+<label asp-for="Contraseña">Contraseña</label>
+    <input class="form-control" type="password" asp-for="Contraseña" required/>
+    <br />
+    <label asp-for="ConfirmarContraseña">Confirmar Contraseña</label>
+    <input class="form-control" type="password" asp-for="ConfirmarContraseña" required />
+    <br />
+   
+    <label asp-for="FechadeNacimiento">Fecha de Nacimiento</label>
+    <input class="form-control" type="date" asp-for="FechadeNacimiento" />
+    <br />
+   
+    <label asp-for="Pais">Pais de Nacimiento</label>
+    <select class="form-select select " asp-for="Pais">
+
+        @foreach   (var pais in Model.ListaPaises)
+        {
+            <option value="@pais.Nombre">@pais.Nombre</option>
+        }
+    </select>
+    <br />
+    <input type="submit" value="Registrar Usuario" />
+
+</form>
+@Model.Estado
